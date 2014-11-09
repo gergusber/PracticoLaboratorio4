@@ -1,0 +1,104 @@
+USE [master]
+GO
+
+/****** Object:  Database [PracticoBerteaQuiroga]    Script Date: 11/09/2014 18:59:30 ******/
+CREATE DATABASE [PracticoBerteaQuiroga] ON  PRIMARY 
+( NAME = N'PracticoBerteaQuiroga', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\PracticoBerteaQuiroga.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'PracticoBerteaQuiroga_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\PracticoBerteaQuiroga_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET COMPATIBILITY_LEVEL = 100
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [PracticoBerteaQuiroga].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET AUTO_CREATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET  READ_WRITE 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET RECOVERY FULL 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [PracticoBerteaQuiroga] SET DB_CHAINING OFF 
+GO
+
+
