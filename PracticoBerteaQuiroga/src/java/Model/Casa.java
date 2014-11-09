@@ -13,6 +13,7 @@ public class Casa {
     private int idCasa ;
     private int cantPersonas;
     private int cantHabitaciones;
+    private int cantBanios;
     private boolean patio;
     private boolean cochera;
     private float superficie;
