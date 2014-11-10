@@ -48,32 +48,14 @@ public class ConexionJDBC {
             System.out.println("Error al cerrar conexión: " + e.getMessage());
         }
     }
-    
-        public String todas() //PUNTO 2
-    {
-        rs=null;
-        try
-        {
-            st=con.createStatement();
-            rs=st.executeQuery("select * from dbo.Casas");
-            return "Consulta exitosa";
-        }
-        catch(Exception E)
-        {
-            return E.getMessage();
-        }
-        
-        
-    }
+
           public ArrayList<Casa> getCasasByFilter(Date fechaDesde, Date fechaHasta)
         {
             ArrayList<Casa> lista = new ArrayList<Casa>();
             Casa casa;
-           
-            rs = null; 
             try {
                 st = con.createStatement();
-                rs = st.executeQuery("select * from Casa c innerjoin Alquileres a on c.idCasa = a.idCasa where a.fechaHasta NOT BETWEEN "+fechaDesde +" and "+fechaHasta );
+                rs = st.executeQuery("select * from Casas c innerjoin Alquileres a on c.idCasa = a.idCasa where a.fechaHasta NOT BETWEEN "+fechaDesde +" and "+fechaHasta );
            if(rs != null){
                while(rs.next()){
                  casa = new Casa();
@@ -97,6 +79,41 @@ public class ConexionJDBC {
             }
          return lista;
         }
+        
+        public Casa getCasaById(int idCasa)
+        {
+            Casa c = null;
+            String query= "select * from Casas c where c.idCasa="+idCasa;
+            try 
+            {
+                st = con.createStatement();
+                rs = st.executeQuery(query);
+                if(rs!=null)
+                {
+                    while (rs.next()) 
+                    {                        
+                        c=new Casa();
+                        c.setIdCasa(rs.getInt("idCasa"));
+                        c.setCantPersonas(rs.getInt("cantPersonas"));
+                        c.setCantHabitaciones(rs.getInt("cantHabitaciones"));
+                        c.setCantBanios(rs.getInt("cantBanios"));
+                        c.setPatio(rs.getBoolean("patio"));
+                        c.setCochera(rs.getBoolean("cochera"));
+                        c.setSuperficie(rs.getFloat("superficie"));
+                        c.setCantAutos(rs.getInt("cantAutos"));
+                        c.setValoracion(rs.getInt("valoracion"));
+                        c.setPrecioPorDia(rs.getFloat("precioPorDia"));
+                        break;
+                    }
+                    return c;
+                }
+            } 
+            catch (Exception e) {
+            }
+            return c;
+        }
+          
+          
     
 }
 
