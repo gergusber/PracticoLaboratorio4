@@ -5,14 +5,21 @@
  */
 package Servlets;
 
+import Controlador.ConexionJDBC;
+import Model.Casa;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.jasper.tagplugins.jstl.ForEach;
 
 /**
  *
@@ -35,20 +42,49 @@ public class Busqueda extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String fechaDesde= request.getParameter("fechaDesde");
-            String fechaHasta = request.getParameter("fechaHasta");
-            
-            
+            Date fechaDesde = FormaterFecha(request.getParameter("fechaDesde"));
+            Date fechaHasta = FormaterFecha(request.getParameter("fechaHasta"));
+            ArrayList<Casa> casas = ConexionJDBC.getInstance().getCasasByFilter(fechaDesde, fechaHasta);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
+            out.println("<form action=\"ConsultaCasa.jsp\">");
             out.println("<head>");
             out.println("<title>Servlet de Busqueda</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Busqueda at " + request.getContextPath() + "</h1>");
+            
+            out.println("<ul>");
+            // Declaramos el Iterador e imprimimos los Elementos del ArrayList
+            Iterator It = casas.iterator();
+            while(It.hasNext()){
+               Casa c =(Casa) It.next();
+               out.println("<input type=\"hidden\" name=\"idCasa\" value= "+c.getIdCasa()+">");
+               out.println("<input type=\"hidden\" name=\"fechaDesdeAlquiler\" value= "+fechaDesde+">");
+               out.println("<input type=\"hidden\" name=\"fechaHastaAlquiler\" value= "+fechaHasta+">");
+               out.println("<li> Casa: "+c.getPrecioPorDia()+"- Valoracion: " + c.getValoracion()+ "<input type=\"submit\" value=\"Consultar\">"+"</li>");  
+            }
+            out.println("</ul>");
             out.println("</body>");
+            out.println("</form >"); 
             out.println("</html>");
+ 
+           
         }
+    }
+    public Date FormaterFecha(String fecha){
+           Date FechaRet = null;
+           
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+             try 
+             {  
+                  FechaRet = formatter.parse(fecha);
+                
+             }
+             catch (Exception e)
+             {
+             }
+
+         return FechaRet;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
