@@ -32,6 +32,7 @@
                 float superficie = c.getSuperficie();
                 boolean patio = c.isPatio();
                 boolean cochera = c.isCochera();
+                String direccion = c.getDireccion();
         %>
         <h3>Detalles:</h3>
         <form method="POST" action="">
@@ -39,6 +40,10 @@
             <input type="hidden" value="<%= fechaDesdeAlquiler%>" name="fechaDesdeAlquiler"/>
             <input type="hidden" value="<%= fechaHastaAlquiler%>" name="fechaDesdefechaDesdeAlquiler"/>
             <table>
+                <tr>
+                    <td>Dirección:</td>
+                    <td><%= direccion%></td>
+                </tr>
                 <tr>
                     <td>Cantidad de personas:</td>
                     <td><%= cantPersonas%></td>
@@ -65,10 +70,12 @@
                         <%if (!cochera) {%>No<% }%>
                     </td>
                 </tr>
+                <%if (cochera) {%>
                 <tr>
                     <td>Cantidad de autos:</td>
                     <td><%= cantAutos%></td>
                 </tr>
+                <% }%>
                 <tr>
                     <td>Superficie</td>
                     <td><%= superficie%></td>
@@ -91,7 +98,7 @@
         <% }%>
 
         <!--Muestro mensaje si no encontró la casa-->
-        <%else {%>
+        <%if(c==null){%>
         <h2>No se encontró información de la casa seleccionada</h2>
         <%}%>
     </body>

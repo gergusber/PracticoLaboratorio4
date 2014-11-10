@@ -10,10 +10,31 @@ package Model;
  * @author German
  */
 public class Casa {
-    private int idCasa ;
+
+    private int idCasa;
     private int cantPersonas;
     private int cantHabitaciones;
     private int cantBanios;
+    private boolean patio;
+    private boolean cochera;
+    private float superficie;
+    private int cantAutos;
+    private int valoracion;
+    private float precioPorDia;
+    private String direccion;
+
+    public Casa() {
+        idCasa = 0;
+        cantPersonas = 0;
+        cantHabitaciones = 0;
+        patio = false;
+        cochera = false;
+        superficie = 0;
+        cantAutos = 0;
+        valoracion = 0;
+        precioPorDia = 0;
+        direccion = "";
+    }
 
     public int getCantBanios() {
         return cantBanios;
@@ -22,37 +43,15 @@ public class Casa {
     public void setCantBanios(int cantBanios) {
         this.cantBanios = cantBanios;
     }
-    private boolean patio;
-    private boolean cochera;
-    private float superficie;
-    private int cantAutos;
-    private int valoracion;
-    private float precioPorDia;
-    
-    public Casa(int idCasa, int cantPersonas, int cantHabitaciones, boolean patio, boolean cochera, float superficie, int cantAutos, int valoracion,float precioPorDia) {
-        this.idCasa = idCasa;
-        this.cantPersonas = cantPersonas;
-        this.cantHabitaciones = cantHabitaciones;
-        this.patio = patio;
-        this.cochera = cochera;
-        this.superficie = superficie;
-        this.cantAutos = cantAutos;
-        this.valoracion = valoracion;
-        this.precioPorDia= precioPorDia;
+
+    public String getDireccion() {
+        return direccion;
     }
-    public Casa(){
-        idCasa=0;
-        cantPersonas=0;
-        cantHabitaciones=0;
-        patio=false;
-        cochera=false;
-        superficie=0;
-        cantAutos=0;
-        valoracion=0;
-        precioPorDia=0;
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
-    
-    
+
     public int getIdCasa() {
         return idCasa;
     }
@@ -129,6 +128,4 @@ public class Casa {
     public String toString() {
         return "Casa{" + "idCasa=" + idCasa + ", cantPersonas=" + cantPersonas + ", cantHabitaciones=" + cantHabitaciones + ", patio=" + patio + ", cochera=" + cochera + ", superficie=" + superficie + ", cantAutos=" + cantAutos + ", valoracion=" + valoracion + ", precioPorDia=" + precioPorDia + '}';
     }
-
-    
 }

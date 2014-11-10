@@ -33,7 +33,7 @@ public class ConexionJDBC {
 
     public void abrirConexion() {
         try {
-           // String url = "jdbc:sqlserver://MAURI-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=20339762527";
+            //String url = "jdbc:sqlserver://MAURI-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=20339762527";
             String url = "jdbc:sqlserver://German-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
             con = DriverManager.getConnection(url);
@@ -93,7 +93,7 @@ public class ConexionJDBC {
                 if(rs!=null)
                 {
                     while (rs.next()) 
-                    {                        
+                    {
                         c=new Casa();
                         c.setIdCasa(rs.getInt("idCasa"));
                         c.setCantPersonas(rs.getInt("cantPersonas"));
@@ -105,6 +105,7 @@ public class ConexionJDBC {
                         c.setCantAutos(rs.getInt("cantAutos"));
                         c.setValoracion(rs.getInt("valoracion"));
                         c.setPrecioPorDia(rs.getFloat("precioPorDia"));
+                        c.setDireccion(rs.getString("direccion"));
                         break;
                     }
                     return c;
