@@ -50,7 +50,7 @@ public class Busqueda extends HttpServlet {
             ArrayList<Casa> casas = ConexionJDBC.getInstance().getCasasByFilter(fechaDesde, fechaHasta);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<form action=\"ConsultaCasa.jsp\">");
+           
             out.println("<head>");
             out.println("<title>Servlet de Busqueda</title>");            
             out.println("</head>");
@@ -61,14 +61,15 @@ public class Busqueda extends HttpServlet {
             Iterator It = casas.iterator();
             while(It.hasNext()){
                Casa c =(Casa) It.next();
+                out.println("<form action=\"ConsultaCasa.jsp\">");
                out.println("<input type=\"hidden\" name=\"idCasa\" value="+c.getIdCasa()+">");
                out.println("<input type=\"hidden\" name=\"fechaDesdeAlquiler\" value= "+fechaDesde+">");
                out.println("<input type=\"hidden\" name=\"fechaHastaAlquiler\" value= "+fechaHasta+">");
                out.println("<li> Casa: "+c.getPrecioPorDia()+"- Valoracion: " + c.getValoracion()+ "<input type=\"submit\" value=\"Consultar\">"+"</li>");  
+             out.println("</form >"); 
             }
             out.println("</ul>");
             out.println("</body>");
-            out.println("</form >"); 
             out.println("</html>");
 
         } ConexionJDBC.getInstance().cerrarConexion();
