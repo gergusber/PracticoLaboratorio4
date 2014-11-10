@@ -14,6 +14,14 @@ public class Casa {
     private int cantPersonas;
     private int cantHabitaciones;
     private int cantBanios;
+
+    public int getCantBanios() {
+        return cantBanios;
+    }
+
+    public void setCantBanios(int cantBanios) {
+        this.cantBanios = cantBanios;
+    }
     private boolean patio;
     private boolean cochera;
     private float superficie;
