@@ -9,6 +9,20 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form action="Busqueda" method="GET">
+            <table>
+                <tr>
+                    <td>Desde:</td>
+                    <td><input type="text" name="fechaDesde" value="dd/MM/AAAA"/></td>
+                </tr>
+                   <tr>
+                    <td>Hasta:</td>
+                    <td><input type="text" name="fechaHasta" value="dd/MM/AAAA"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Consultar"/></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
