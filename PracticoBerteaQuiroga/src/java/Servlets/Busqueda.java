@@ -14,12 +14,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.jasper.tagplugins.jstl.ForEach;
+
 
 /**
  *
@@ -44,6 +46,7 @@ public class Busqueda extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             Date fechaDesde = FormaterFecha(request.getParameter("fechaDesde"));
             Date fechaHasta = FormaterFecha(request.getParameter("fechaHasta"));
+            ConexionJDBC.getInstance().abrirConexion();
             ArrayList<Casa> casas = ConexionJDBC.getInstance().getCasasByFilter(fechaDesde, fechaHasta);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -67,25 +70,28 @@ public class Busqueda extends HttpServlet {
             out.println("</body>");
             out.println("</form >"); 
             out.println("</html>");
- 
-           
-        }
+
+        } ConexionJDBC.getInstance().cerrarConexion();
     }
     public Date FormaterFecha(String fecha){
-           Date FechaRet = null;
-           
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-             try 
-             {  
-                  FechaRet = formatter.parse(fecha);
-                
-             }
-             catch (Exception e)
-             {
-             }
-
-         return FechaRet;
+  
+             Date startDate = null;
+        try{
+        
+         //startDate = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(fecha);
+         
+         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+         
+         startDate = sourceFormat.parse(fecha);
+        }
+        catch ( Exception ex ){
+            System.out.println(ex);
+        }
+        return  startDate;
     }
+    
+     
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
