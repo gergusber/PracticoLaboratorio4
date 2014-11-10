@@ -18,6 +18,8 @@
         <% ConexionJDBC conexion = ConexionJDBC.getInstance();
             conexion.abrirConexion();
             int idCasa = Integer.parseInt(request.getParameter("idCasa"));
+            String fechaDesdeAlquiler = request.getParameter("fechaDesdeAlquiler");
+            String fechaHastaAlquiler = request.getParameter("fechaHastaAlquiler");
             Casa c = conexion.getCasaById(idCasa);
             conexion.cerrarConexion();
             if (c != null) {
@@ -34,8 +36,8 @@
         <h3>Detalles:</h3>
         <form method="POST" action="">
             <input type="hidden" value="<%= idCasa%>" name="idCasa"/>
-            <input type="hidden" value="<%= idCasa%>" name="fechaDesdeAlquiler"/>
-            <input type="hidden" value="<%= idCasa%>" name="fechaDesdefechaDesdeAlquiler"/>
+            <input type="hidden" value="<%= fechaDesdeAlquiler%>" name="fechaDesdeAlquiler"/>
+            <input type="hidden" value="<%= fechaHastaAlquiler%>" name="fechaDesdefechaDesdeAlquiler"/>
             <table>
                 <tr>
                     <td>Cantidad de personas:</td>
@@ -92,7 +94,5 @@
         <%else {%>
         <h2>No se encontró información de la casa seleccionada</h2>
         <%}%>
-
-
     </body>
 </html>

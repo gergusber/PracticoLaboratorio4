@@ -20,16 +20,17 @@ public class Alquileres {
     private int cantidadDias;
     private float precioPorDia;
     private float precioReal;
-
-    public Alquileres(int idAlquiler, int idCasa, int idTemporada, Date fechaDesde, Date fechaHasta, int cantidadDias, float precioPorDia, float precioReal) {
-        this.idAlquiler = idAlquiler;
-        this.idCasa = idCasa;
-        this.idTemporada = idTemporada;
-        this.fechaDesde = fechaDesde;
-        this.fechaHasta = fechaHasta;
-        this.cantidadDias = cantidadDias;
-        this.precioPorDia = precioPorDia;
-        this.precioReal = precioReal;
+    
+    public Alquileres(){
+        idAlquiler = 0;
+        idCasa= 0;
+        idTemporada = 0;
+        cantidadDias = 0;
+        precioPorDia = 0;
+        precioReal = 0;
+        fechaDesde = null;
+        fechaHasta = null;
+        
     }
 
     public int getIdAlquiler() {
