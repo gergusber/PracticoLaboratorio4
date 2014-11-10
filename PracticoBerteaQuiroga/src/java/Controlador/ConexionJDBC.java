@@ -8,7 +8,9 @@ package Controlador;
  *
  * @author Mauri
  */
+import Model.Casa;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ConexionJDBC {
 
@@ -63,6 +65,38 @@ public class ConexionJDBC {
         
         
     }
+          public ArrayList<Casa> getCasasByFilter(Date fechaDesde, Date fechaHasta)
+        {
+            ArrayList<Casa> lista = new ArrayList<Casa>();
+            Casa casa;
+           
+            rs = null; 
+            try {
+                st = con.createStatement();
+                rs = st.executeQuery("select * from Casa c innerjoin Alquileres a on c.idCasa = a.idCasa where a.fechaHasta NOT BETWEEN "+fechaDesde +" and "+fechaHasta );
+           if(rs != null){
+               while(rs.next()){
+                 casa = new Casa();
+                 casa.setIdCasa(rs.getInt("idCasa")); 
+                 casa.setCantHabitaciones(rs.getInt("cantHabitaciones"));
+                 casa.setCantPersonas(rs.getInt("cantPersonas"));
+                 casa.setCantAutos(rs.getInt("cantAutos"));
+                 casa.setValoracion(rs.getInt("valoracion"));
+                 casa.setPatio(rs.getBoolean("patio"));
+                 casa.setCochera(rs.getBoolean("cochera")); 
+                 casa.setPrecioPorDia(rs.getFloat("precioPorDia")); 
+                 casa.setSuperficie(rs.getFloat("superficie"));
+                lista.add(casa);
+               }
+               return lista;
+           }
+            }
+            catch(Exception E)
+            {
+                E.printStackTrace();
+            }
+         return lista;
+        }
     
 }
 
