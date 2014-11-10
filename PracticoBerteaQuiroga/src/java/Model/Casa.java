@@ -18,8 +18,9 @@ public class Casa {
     private float superficie;
     private int cantAutos;
     private int valoracion;
-
-    public Casa(int idCasa, int cantPersonas, int cantHabitaciones, boolean patio, boolean cochera, float superficie, int cantAutos, int valoracion) {
+    private float precioPorDia;
+    
+    public Casa(int idCasa, int cantPersonas, int cantHabitaciones, boolean patio, boolean cochera, float superficie, int cantAutos, int valoracion,float precioPorDia) {
         this.idCasa = idCasa;
         this.cantPersonas = cantPersonas;
         this.cantHabitaciones = cantHabitaciones;
@@ -28,8 +29,19 @@ public class Casa {
         this.superficie = superficie;
         this.cantAutos = cantAutos;
         this.valoracion = valoracion;
+        this.precioPorDia= precioPorDia;
     }
-
+    public Casa(){
+        idCasa=0;
+        cantPersonas=0;
+        cantHabitaciones=0;
+        patio=false;
+        cochera=false;
+        superficie=0;
+        cantAutos=0;
+        valoracion=0;
+        precioPorDia=0;
+    }
     
     
     public int getIdCasa() {
@@ -96,11 +108,18 @@ public class Casa {
         this.valoracion = valoracion;
     }
 
+    public float getPrecioPorDia() {
+        return precioPorDia;
+    }
+
+    public void setPrecioPorDia(float precioPorDia) {
+        this.precioPorDia = precioPorDia;
+    }
+
     @Override
     public String toString() {
-        return "Casa" + "codigo =" + idCasa + ", cantPersonas=" + cantPersonas + ", cantHabitaciones=" + cantHabitaciones + ", patio=" + patio + ", cochera=" + cochera + ", superficie=" + superficie + ", cantAutos=" + cantAutos + ", valoracion=" + valoracion ;
+        return "Casa{" + "idCasa=" + idCasa + ", cantPersonas=" + cantPersonas + ", cantHabitaciones=" + cantHabitaciones + ", patio=" + patio + ", cochera=" + cochera + ", superficie=" + superficie + ", cantAutos=" + cantAutos + ", valoracion=" + valoracion + ", precioPorDia=" + precioPorDia + '}';
     }
+
     
-    
-   
 }
