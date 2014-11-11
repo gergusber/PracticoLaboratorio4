@@ -50,25 +50,26 @@ public class Busqueda extends HttpServlet {
             ArrayList<Casa> casas = ConexionJDBC.getInstance().getCasasByFilter(fechaDesde, fechaHasta);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-           
             out.println("<head>");
             out.println("<title>Servlet de Busqueda</title>");            
             out.println("</head>");
             out.println("<body>");
             
             out.println("<ul>");
+            out.println("<hr>");
             // Declaramos el Iterador e imprimimos los Elementos del ArrayList
             Iterator It = casas.iterator();
             while(It.hasNext()){
                Casa c =(Casa) It.next();
-                out.println("<form action=\"ConsultaCasa.jsp\">");
+               out.println("<form action=\"ConsultaCasa.jsp\">");
                out.println("<input type=\"hidden\" name=\"idCasa\" value="+c.getIdCasa()+">");
                out.println("<input type=\"hidden\" name=\"fechaDesdeAlquiler\" value= "+fechaDesde+">");
                out.println("<input type=\"hidden\" name=\"fechaHastaAlquiler\" value= "+fechaHasta+">");
                out.println("<li> Casa: "+c.getPrecioPorDia()+"- Valoracion: " + c.getValoracion()+ "<input type=\"submit\" value=\"Consultar\">"+"</li>");  
-             out.println("</form >"); 
+               out.println("<br>");
+               out.println("</form >"); 
             }
-            out.println("</ul>");
+            out.println("<hr>");
             out.println("</body>");
             out.println("</html>");
 
