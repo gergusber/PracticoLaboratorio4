@@ -35,8 +35,8 @@ public class ConexionJDBC {
 
     public void abrirConexion() {
         try {
-            String url = "jdbc:sqlserver://MAURI-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=20339762527";
-            //String url = "jdbc:sqlserver://German-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=123456";
+            //String url = "jdbc:sqlserver://MAURI-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=20339762527";
+            String url = "jdbc:sqlserver://German-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=123456";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
             con = DriverManager.getConnection(url);
             System.out.println("Conexión a la BD");
@@ -57,21 +57,14 @@ public ArrayList<Casa> getCasasByFilter(Date fechaDesde, Date fechaHasta)
         {
             ArrayList<Casa> lista = new ArrayList<Casa>();
             Casa casa;
-            String query;
-            if(fechaDesde != null && fechaHasta != null)
-            {
-                 DateFormat sourceFormat = new SimpleDateFormat("yyyyMMdd"); 
-                 query ="select * from Casas c join Alquileres a on c.idCasa = a.idCasa where a.fechaHasta NOT BETWEEN '"+ sourceFormat.format(fechaDesde) +"' and '"+ sourceFormat.format(fechaHasta) + "' AND a.fechaDesde NOT BETWEEN '"+sourceFormat.format(fechaDesde) +"' and '"+sourceFormat.format(fechaHasta)+"'";
-            }
-            else
-            {
-                query="select * from Casas c  join Alquileres a on c.idCasa = a.idCasa where a.fechaHasta<GetDate()";
-            }
-           
-           
+            
+            DateFormat sourceFormat = new SimpleDateFormat("yyyyMMdd"); 
+
+            String url ="select * from Casas c join Alquileres a on c.idCasa = a.idCasa where a.fechaHasta NOT BETWEEN '"+ sourceFormat.format(fechaDesde) +"' and '"+ sourceFormat.format(fechaHasta) + "' AND a.fechaDesde NOT BETWEEN '"+sourceFormat.format(fechaDesde) +"' and '"+sourceFormat.format(fechaHasta)+"'";
+            String url2="select * from Casas c join Alquileres a on c.idCasa = a.idCasa where a.fechaHasta  NOT BETWEEN '10/18/1992' and '10/01/1993' AND a.fechaDesde NOT BETWEEN '10/01/1992' and '10/01/1993'"; 
             try {
                 st = con.createStatement();
-                rs = st.executeQuery(query);
+                rs = st.executeQuery(url);
            if(rs != null){
                while(rs.next()){
                  casa = new Casa();
