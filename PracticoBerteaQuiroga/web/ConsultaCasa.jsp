@@ -35,14 +35,14 @@
                 String direccion = c.getDireccion();
         %>
         <h3>Detalles:</h3>
-        <form method="POST" action="">
+        <form method="POST" action="RegistrarAlquiler.jsp">
             <input type="hidden" value="<%= idCasa%>" name="idCasa"/>
             <input type="hidden" value="<%= fechaDesdeAlquiler%>" name="fechaDesdeAlquiler"/>
-            <input type="hidden" value="<%= fechaHastaAlquiler%>" name="fechaDesdefechaDesdeAlquiler"/>
+            <input type="hidden" value="<%= fechaHastaAlquiler%>" name="fechaHastaAlquiler"/>
             <table>
                 <tr>
                     <td>Dirección:</td>
-                    <td><%= direccion%></td>
+                    <td><input type="text" name="direccion" value="<%= direccion%>"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad de personas:</td>
@@ -82,7 +82,7 @@
                 </tr>
                 <tr>
                     <td>Precio por día:</td>
-                    <td><%= precioPorDia%></td>
+                    <td><input type="text" name="precioPorDia" value="<%= precioPorDia%>"/></td>
                 </tr>
                 <tr>
                     <td>Valoración:</td>

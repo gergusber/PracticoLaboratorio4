@@ -14,12 +14,12 @@ public class Temporadas {
     private String descripcion;
     private float porcentaje;
 
-    public Temporadas(int idTemporada, String descripcion, float porcentaje) {
-        this.idTemporada = idTemporada;
-        this.descripcion = descripcion;
-        this.porcentaje = porcentaje;
+    public Temporadas()
+    {
+        idTemporada=0;
+        descripcion="";
+        porcentaje=0;
     }
-
     public int getIdTemporada() {
         return idTemporada;
     }

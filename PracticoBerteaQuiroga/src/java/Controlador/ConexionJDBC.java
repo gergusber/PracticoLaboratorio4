@@ -8,7 +8,7 @@ package Controlador;
  *
  * @author Mauri
  */
-import Model.Casa;
+import Model.*;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -121,6 +121,31 @@ public ArrayList<Casa> getCasasByFilter(Date fechaDesde, Date fechaHasta)
             catch (Exception e) {
             }
             return c;
+        }
+        
+        public ArrayList<Temporadas> getTemporadas()
+        {
+            ArrayList<Temporadas> lista = new ArrayList<>();
+            Temporadas t;
+            String query = "select * from Temporadas";
+            try 
+            {
+                st = con.createStatement();
+                rs = st.executeQuery(query);
+                
+                while(rs.next())
+                {
+                    t=new Temporadas();
+                    t.setDescripcion(rs.getString("descripcion"));
+                    t.setIdTemporada(rs.getInt("idTemporada"));
+                    t.setPorcentaje(rs.getFloat("porcentaje"));
+                    lista.add(t);
+                }
+            } 
+            catch (Exception e) 
+            {
+            }
+            return lista;
         }
           
           
