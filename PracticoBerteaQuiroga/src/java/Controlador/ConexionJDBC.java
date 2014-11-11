@@ -188,28 +188,43 @@ public class ConexionJDBC {
     }
 
     public Alquileres RegistrarAlquiler(Alquileres a) {
-        
+
         Alquileres result = null;
         Temporadas t = getTemporadaById(a.getIdTemporada());
         DateFormat sourceFormat = new SimpleDateFormat("yyyyMMdd");
 
-        if (t != null) 
-        {
-            float precioDiaTemporada = a.getPrecioPorDia()*((t.getPorcentaje()/100)+1);
-            float precioReal = ( precioDiaTemporada * a.getCantidadDias());
+        if (t != null) {
+            float precioDiaTemporada = a.getPrecioPorDia() * ((t.getPorcentaje() / 100) + 1);
+            float precioReal = (precioDiaTemporada * a.getCantidadDias());
             a.setPrecioReal(precioReal);
             String query = "insert into Alquileres(idCasa,idTemporada,fechaDesde,fechaHasta,cantidadPersonas,cantidadDias,precioPorDia,precioReal) ";
-            query+= "values("+a.getIdCasa()+","+a.getIdTemporada()+",'"+sourceFormat.format(a.getFechaDesde())+"','"+sourceFormat.format(a.getFechaHasta())+"',"+a.getCantidadPersonas()+","+a.getCantidadDias()+","+a.getPrecioPorDia()+","+a.getPrecioReal()+")" ;
-            
-            try
-            {
-                st=con.createStatement();
+            query += "values(" + a.getIdCasa() + "," + a.getIdTemporada() + ",'" + sourceFormat.format(a.getFechaDesde()) + "','" + sourceFormat.format(a.getFechaHasta()) + "'," + a.getCantidadPersonas() + "," + a.getCantidadDias() + "," + a.getPrecioPorDia() + "," + a.getPrecioReal() + ")";
+
+            try {
+                st = con.createStatement();
                 PreparedStatement ps = con.prepareStatement(query);
                 ps.executeUpdate();
-                result=a;
+                result = a;
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            catch (SQLException e)
-            {
+        }
+        return result;
+    }
+
+    public Casa RegistrarCasa(Casa c) {
+
+        Casa result = null;
+        if (c != null) {
+            String query = "insert into Casas(idCasa,cantPersonas,cantHabitaciones,cantBanios,patio,cochera,superficie,cantAutos,valoracion,precioPorDia,direccion) ";
+            query += "values("+ c.getCantPersonas() + "," + c.getCantHabitaciones() + "," + c.getCantBanios() + "," + c.isPatio() + "," + c.isCochera() + "," + c.getSuperficie() + "," + c.getCantAutos() + "," + c.getValoracion() + "," + c.getPrecioPorDia() + "," + c.getDireccion() + ")";
+
+            try {
+                st = con.createStatement();
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.executeUpdate();
+                result = c;
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }

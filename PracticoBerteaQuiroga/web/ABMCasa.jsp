@@ -20,7 +20,7 @@
         <title>ABM Casa</title>
     </head>
     <body>
-        <hr/>
+        <hr
     <center>
         <table>
             <thead>
@@ -41,7 +41,7 @@
             </tbody>
         </table>
     </center>
-    <hr/>
+    <hr
     <center>
         <h1>Abm Casas</h1>
 
@@ -65,30 +65,30 @@
                     <td>Cochera:</td>
                     <td>Superficie:</td>
                     <td>Cantidad de Autos:</td>
-                    <td>valoracion:</td>
+                    <td>Valoracion:</td>
                     <td>Precio Por Dia:</td>
                     <td>Acciones:</td>
                 </tr>
                 <c:forEach var="item" items="${Casas}">   
                     <form method="GET" action="AltaModificacionCasa.jsp">
                         <input type="hidden" class="Accion" name="Accion" >
-                        <input type="hidden" id="idCasa" value="${item.idCasa}">
+                        <input type="hidden" id="idCasa" value="${item.idCasa}" name="idCasa">
                         <tr>
-                            <td style="text-align: center"><c:out value="${item.direccion}"/><p></td>
+                            <td style="text-align: center"><input type="text" value="${item.direccion}" name="direccion"><p></td>
 
-                            <td style="text-align: center"><c:out value="${item.cantPersonas}"/><p></td>
+                            <td style="text-align: center"> <input type="text" value="${item.cantPersonas}" name="cantPersonas"><p></td>
 
-                            <td style="text-align: center"><c:out value="${item.cantHabitaciones}"/><p></td>
+                            <td style="text-align: center"> <input type="text" value="${item.cantHabitaciones}" name="cantHabitaciones"><p></td>
 
-                            <td style="text-align: center"><c:out value="${item.cantBanios}"/><p></td>
+                            <td style="text-align: center"> <input type="text" value="${item.cantBanios}" name="cantBanios"><p></td>
 
                             <td style="text-align: center" >
                                 <c:choose>
                                     <c:when test="${item.patio == true}" >
-                                        <c:out value="Si"/><p>
+                                         <input type="text" value="Si" name="patio"><p>
                                         </c:when>
                                         <c:otherwise>
-                                            <c:out value="No"/><p>
+                                             <input type="text" value="No" name="patio"><p>
                                         </c:otherwise>
                                     </c:choose>
                             </td>
@@ -96,21 +96,21 @@
                             <td style="text-align: center">
                                 <c:choose>
                                     <c:when test="${item.cochera == true}" >
-                                        <c:out value="Si"/><p>
+                                         <input type="text" value="Si" name="cochera"><p>
                                         </c:when>
                                         <c:otherwise>
-                                            <c:out value="No"/><p>
+                                             <input type="text" value="No" name="cochera"><p>
                                         </c:otherwise>
                                     </c:choose>
                             </td>
 
-                            <td style="text-align: center"> <c:out value="${item.superficie}"/><p></td>
+                            <td style="text-align: center">  <input type="text" value="${item.superficie}" name="superficie"><p></td>
 
-                            <td style="text-align: center"><c:out value="${item.cantAutos}"/><p></td>
+                            <td style="text-align: center"> <input type="text" value="${item.cantAutos}" name="cantAutos"><p></td>
 
-                            <td style="text-align: center" ><c:out value="${item.valoracion}"/><p></td>
+                            <td style="text-align: center" > <input type="text" value="${item.valoracion}" name="valoracion"><p></td>
 
-                            <td style="text-align: center"><c:out value="${item.precioPorDia}"/><p></td>
+                            <td style="text-align: center"> <input type="text" value="${item.precioPorDia}" name="precioPorDia"><p></td>
 
                             <td style="text-align: center"><input type="submit" class="Modificar" value="Modificar"></td>
                         </tr>
@@ -124,12 +124,12 @@
                 </td>
                 </tr>
             </table>
-            <hr/>
+            <hr
         </c:if>
         <c:if test="${empty Casas}">
-            <hr/>
+            <hr
             <h1>No se encuentran casas cargadas</h1>
-            <hr/>
+            <hr
         </c:if>
     </center>
 </body>
