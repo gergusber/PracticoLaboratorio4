@@ -108,7 +108,9 @@
         
     </body>
 </html>
+
 <script type="text/javascript">
+    /*
     $(document).ready(function() {
         $("#Nuevo").click(function (){
             $("#Accion").val() = 1; 
@@ -117,7 +119,7 @@
         $("#Modificar").click(function (){
             $("#Accion").val() = 2;
         });
-    });
+    });*/
 </script>
 
 
