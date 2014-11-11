@@ -48,7 +48,7 @@
                         Desde:
                     </td>
                     <td>
-                        <input type="text" name="fechaDesde" value="${param.fechaDesdeAlquiler}" disabled="disabled"/>
+                        <input type="text" name="fechaDesde" value="${param.fechaDesdeAlquiler}"/>
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                         Hasta:
                     </td>
                     <td>
-                        <input type="text" name="fechaHasta" value="${param.fechaHastaAlquiler}" disabled="disabled"/>
+                        <input type="text" name="fechaHasta" value="${param.fechaHastaAlquiler}"/>
                     </td>
                 </tr>
                 <tr>
