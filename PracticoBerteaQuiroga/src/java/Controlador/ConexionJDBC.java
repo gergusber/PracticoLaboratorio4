@@ -191,6 +191,7 @@ public class ConexionJDBC {
         
         Alquileres result = null;
         Temporadas t = getTemporadaById(a.getIdTemporada());
+        DateFormat sourceFormat = new SimpleDateFormat("yyyyMMdd");
 
         if (t != null) 
         {
@@ -198,16 +199,18 @@ public class ConexionJDBC {
             float precioReal = ( precioDiaTemporada * a.getCantidadDias());
             a.setPrecioReal(precioReal);
             String query = "insert into Alquileres(idCasa,idTemporada,fechaDesde,fechaHasta,cantidadPersonas,cantidadDias,precioPorDia,precioReal) ";
-            query+= "values("+a.getIdCasa()+","+a.getIdTemporada()+","+a.getFechaDesde()+","+a.getFechaHasta()+","+a.getCantidadPersonas()+","+a.getCantidadDias()+","+a.getPrecioPorDia()+","+a.getPrecioReal()+")" ;
+            query+= "values("+a.getIdCasa()+","+a.getIdTemporada()+",'"+sourceFormat.format(a.getFechaDesde())+"','"+sourceFormat.format(a.getFechaHasta())+"',"+a.getCantidadPersonas()+","+a.getCantidadDias()+","+a.getPrecioPorDia()+","+a.getPrecioReal()+")" ;
             
             try
             {
                 st=con.createStatement();
-                st.executeUpdate(query);
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.executeUpdate();
                 result=a;
             }
-            catch (Exception e)
+            catch (SQLException e)
             {
+                e.printStackTrace();
             }
         }
         return result;
