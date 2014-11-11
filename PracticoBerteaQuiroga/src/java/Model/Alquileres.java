@@ -20,6 +20,8 @@ public class Alquileres {
     private int cantidadDias;
     private float precioPorDia;
     private float precioReal;
+
+    private int cantidadPersonas;
     
     public Alquileres(){
         idAlquiler = 0;
@@ -31,6 +33,15 @@ public class Alquileres {
         fechaDesde = null;
         fechaHasta = null;
         
+    }
+    
+    
+    public int getCantidadPersonas() {
+        return cantidadPersonas;
+    }
+
+    public void setCantidadPersonas(int cantidadPersonas) {
+        this.cantidadPersonas = cantidadPersonas;
     }
 
     public int getIdAlquiler() {

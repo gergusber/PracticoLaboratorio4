@@ -42,51 +42,51 @@
             <table>
                 <tr>
                     <td>Dirección:</td>
-                    <td><input type="text" name="direccion" value="<%= direccion%>" disabled="disabled"/></td>
+                    <td><input type="text" name="direccion" value="<%= direccion%>"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad de personas:</td>
-                    <td><input type="text" value="<%= cantPersonas%>" disabled="disabled"/></td>
+                    <td><input type="text" name="cantidadPersonas" value="<%= cantPersonas%>"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad de habitaciones:</td>
-                    <td><input type="text" value="<%= cantHabitaciones%>" disabled="disabled"/></td>
+                    <td><input type="text" value="<%= cantHabitaciones%>" /></td>
                 </tr>
                 <tr>
                     <td>Cantidad de baños:</td>
-                    <td><input type="text" value="<%= cantBanios%>" disabled="disabled"/></td>
+                    <td><input type="text" value="<%= cantBanios%>" /></td>
                 </tr>
                 <tr>
                     <td>Patio:</td>
                     <td>
-                        <%if (patio) {%><input type="text" value="Si"/><% }%>
-                        <%if (!patio) {%><input type="text" value="No"/><% }%>
+                        <%if (patio) {%><input type="text" value="Si" /><% }%>
+                        <%if (!patio) {%><input type="text" value="No" /><% }%>
                     </td>
                 </tr>
                 <tr>
                     <td>Cochera:</td>
                     <td>
-                        <%if (cochera) {%><input type="text" value="Si"/><% }%>
-                        <%if (!cochera) {%><input type="text" value="No"/><% }%>
+                        <%if (cochera) {%><input type="text" value="Si" /><% }%>
+                        <%if (!cochera) {%><input type="text" value="No" /><% }%>
                     </td>
                 </tr>
                 <%if (cochera) {%>
                 <tr>
                     <td>Cantidad de autos:</td>
-                    <td><input type="text" value="<%= cantAutos%>"/></td>
+                    <td><input type="text" value="<%= cantAutos%>" /></td>
                 </tr>
                 <% }%>
                 <tr>
                     <td>Superficie</td>
-                    <td><input type="text" value="<%= superficie%> m2"/></td>
+                    <td><input type="text" value="<%= superficie%> m2" /></td>
                 </tr>
                 <tr>
                     <td>Precio por día:</td>
-                    <td><input type="text" name="precioPorDia" value="$<%= precioPorDia%>" disabled="disabled"/></td>
+                    <td>$<input type="text" name="precioPorDia" value="<%= precioPorDia%>"/></td>
                 </tr>
                 <tr>
                     <td>Valoración:</td>
-                    <td><input type="text" value="<%= valoracion%>"/></td>
+                    <td><input type="text" value="<%= valoracion%>" /></td>
                 </tr>
                 <tr>
                     <td colspan="2">

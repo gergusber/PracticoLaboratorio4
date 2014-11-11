@@ -25,7 +25,7 @@
             {
         %>
         <h3>Registrar alquiler:</h3>
-        <form action="ResultadoRegistracion.jsp">
+        <form action="ResultadoRegistracionAlquiler.jsp" method="GET">
             <input type="hidden" name="idCasa" value="${param.idCasa}"/>
             <table>
                 <tr>
@@ -49,7 +49,7 @@
                         Desde:
                     </td>
                     <td>
-                        <input type="text" name="fechaDesde" value="${param.fechaDesdeAlquiler}" disabled="disabled"/>
+                        <input type="text" name="fechaDesde" value="${param.fechaDesdeAlquiler}"/>
                     </td>
                 </tr>
                 <tr>
@@ -57,7 +57,7 @@
                         Hasta:
                     </td>
                     <td>
-                        <input type="text" name="fechaHasta" value="${param.fechaHastaAlquiler}" disabled="disabled"/>
+                        <input type="text" name="fechaHasta" value="${param.fechaHastaAlquiler}" />
                     </td>
                 </tr>
                 <tr>
@@ -70,10 +70,18 @@
                 </tr>
                 <tr>
                     <td>
+                        Cantidad de personas:
+                    </td>
+                    <td>
+                        <input type="text" name="cantidadPersonas" value="${param.cantidadPersonas}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Temporada:
                     </td>
                     <td>
-                        <select name="temporada">
+                        <select name="idTemporada">
                            <%
                               for(int j=0; j<listaTemporadas.size();j++)
                               {

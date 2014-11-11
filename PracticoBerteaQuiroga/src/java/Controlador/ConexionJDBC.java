@@ -167,4 +167,49 @@ public class ConexionJDBC {
         }
         return lista;
     }
+
+    public Temporadas getTemporadaById(int idTemporada) {
+        Temporadas t = null;
+        String query = "select descripcion,idTemporada from Temporadas where idTemporada =" + idTemporada;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                t = new Temporadas();
+                t.setDescripcion(rs.getString("descripcion"));
+                t.setIdTemporada(rs.getInt("idTemporada"));
+                t.setPorcentaje(rs.getFloat("porcentaje"));
+                break;
+            }
+        } catch (Exception e) {
+        }
+        return t;
+    }
+
+    public Alquileres RegistrarAlquiler(Alquileres a) {
+        
+        Alquileres result = null;
+        Temporadas t = getTemporadaById(a.getIdTemporada());
+
+        if (t != null) 
+        {
+            float precioDiaTemporada = a.getPrecioPorDia()*((t.getPorcentaje()/100)+1);
+            float precioReal = ( precioDiaTemporada * a.getCantidadDias());
+            a.setPrecioReal(precioReal);
+            String query = "insert into Alquileres(idCasa,idTemporada,fechaDesde,fechaHasta,cantidadPersonas,cantidadDias,precioPorDia,precioReal) ";
+            query+= "values("+a.getIdCasa()+","+a.getIdTemporada()+","+a.getFechaDesde()+","+a.getFechaHasta()+","+a.getCantidadPersonas()+","+a.getCantidadDias()+","+a.getPrecioPorDia()+","+a.getPrecioReal()+")" ;
+            
+            try
+            {
+                st=con.createStatement();
+                st.executeUpdate(query);
+                result=a;
+            }
+            catch (Exception e)
+            {
+            }
+        }
+        return result;
+    }
 }
