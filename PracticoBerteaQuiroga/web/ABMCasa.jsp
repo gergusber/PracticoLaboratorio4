@@ -32,8 +32,6 @@
             conexion.cerrarConexion();
         %>
         <c:if test="${ not empty Casas}">
-            <form method="POST" action="">
-                 <input type="hidden" id="Accion" >
                 <table border="1">
                     <tr>
                         <td>Dirección:</td>
@@ -49,7 +47,9 @@
                         <td>Acciones:</td>
                     </tr>
                     <c:forEach var="item" items="${Casas}">   
+                       <form method="POST" action="AltaModificacionCasa.jsp">
                         <input type="hidden" id="idCasa" value="${item.idCasa}">
+                        <input type="hidden" id="Accion" >
                         <tr>
                             <td style="text-align: center"><c:out value="${item.direccion}"/><p></td>
 
@@ -91,35 +91,35 @@
 
                             <td style="text-align: center"><input type="submit" id="Modificar" value="Modificar"></td>
                         </tr>
+                     </form>
                     </c:forEach>
                     <tr>
                         <td colspan="10">
-                            <input type="submit" value="Alquilar"/>
+                             <input type="submit" id="Nuevo" value="Agregar">
                         </td>
                     </tr>
                 </table>
-            </form>
+       
         </c:if>
         <c:if test="${empty Casas}">
             <h1>No se encuentran casas cargadas</h1>
         </c:if>
-
-        <input type="submit" id="Nuevo" value="Agregar">
-        
     </body>
+    
 </html>
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
-    /*
-    $(document).ready(function() {
+
+    $(document).ready(function() {debugger;
         $("#Nuevo").click(function (){
-            $("#Accion").val() = 1; 
+            $("#Accion").val(1) 
         });
    
         $("#Modificar").click(function (){
-            $("#Accion").val() = 2;
+            $("#Accion").val(2) ;
         });
-    });*/
+    });
 </script>
 
 
