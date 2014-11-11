@@ -35,8 +35,8 @@ public class ConexionJDBC {
 
     public void abrirConexion() {
         try {
-            //String url = "jdbc:sqlserver://MAURI-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=20339762527";
-            String url = "jdbc:sqlserver://German-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=123456";
+            String url = "jdbc:sqlserver://MAURI-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=20339762527";
+            //String url = "jdbc:sqlserver://German-PC;databaseName=PracticoBerteaQuiroga;user=sa;password=123456";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
             con = DriverManager.getConnection(url);
             System.out.println("Conexión a la BD");
@@ -152,7 +152,7 @@ public class ConexionJDBC {
     public ArrayList<Temporadas> getTemporadas() {
         ArrayList<Temporadas> lista = new ArrayList<>();
         Temporadas t;
-        String query = "select * from Temporadas";
+        String query = "select descripcion,idTemporada from Temporadas";
         try {
             st = con.createStatement();
             rs = st.executeQuery(query);
@@ -161,7 +161,6 @@ public class ConexionJDBC {
                 t = new Temporadas();
                 t.setDescripcion(rs.getString("descripcion"));
                 t.setIdTemporada(rs.getInt("idTemporada"));
-                t.setPorcentaje(rs.getFloat("porcentaje"));
                 lista.add(t);
             }
         } catch (Exception e) {

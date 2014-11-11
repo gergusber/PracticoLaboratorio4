@@ -35,58 +35,58 @@
                 String direccion = c.getDireccion();
         %>
         <h3>Detalles:</h3>
-        <form method="POST" action="RegistrarAlquiler.jsp">
+        <form method="GET" action="RegistrarAlquiler.jsp">
             <input type="hidden" value="<%= idCasa%>" name="idCasa"/>
             <input type="hidden" value="<%= fechaDesdeAlquiler%>" name="fechaDesdeAlquiler"/>
             <input type="hidden" value="<%= fechaHastaAlquiler%>" name="fechaHastaAlquiler"/>
             <table>
                 <tr>
                     <td>Dirección:</td>
-                    <td><input type="text" name="direccion" value="<%= direccion%>"/></td>
+                    <td><input type="text" name="direccion" value="<%= direccion%>" disabled="disabled"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad de personas:</td>
-                    <td><%= cantPersonas%></td>
+                    <td><input type="text" value="<%= cantPersonas%>" disabled="disabled"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad de habitaciones:</td>
-                    <td><%= cantHabitaciones%></td>
+                    <td><input type="text" value="<%= cantHabitaciones%>" disabled="disabled"/></td>
                 </tr>
                 <tr>
                     <td>Cantidad de baños:</td>
-                    <td><%= cantBanios%></td>
+                    <td><input type="text" value="<%= cantBanios%>" disabled="disabled"/></td>
                 </tr>
                 <tr>
                     <td>Patio:</td>
                     <td>
-                        <%if (patio) {%>Si<% }%>
-                        <%if (!patio) {%>No<% }%>
+                        <%if (patio) {%><input type="text" value="Si"/><% }%>
+                        <%if (!patio) {%><input type="text" value="No"/><% }%>
                     </td>
                 </tr>
                 <tr>
                     <td>Cochera:</td>
                     <td>
-                        <%if (cochera) {%>Si<% }%>
-                        <%if (!cochera) {%>No<% }%>
+                        <%if (cochera) {%><input type="text" value="Si"/><% }%>
+                        <%if (!cochera) {%><input type="text" value="No"/><% }%>
                     </td>
                 </tr>
                 <%if (cochera) {%>
                 <tr>
                     <td>Cantidad de autos:</td>
-                    <td><%= cantAutos%></td>
+                    <td><input type="text" value="<%= cantAutos%>"/></td>
                 </tr>
                 <% }%>
                 <tr>
                     <td>Superficie</td>
-                    <td><%= superficie%></td>
+                    <td><input type="text" value="<%= superficie%> m2"/></td>
                 </tr>
                 <tr>
                     <td>Precio por día:</td>
-                    <td><input type="text" name="precioPorDia" value="<%= precioPorDia%>"/></td>
+                    <td><input type="text" name="precioPorDia" value="$<%= precioPorDia%>" disabled="disabled"/></td>
                 </tr>
                 <tr>
                     <td>Valoración:</td>
-                    <td><%= valoracion%></td>
+                    <td><input type="text" value="<%= valoracion%>"/></td>
                 </tr>
                 <tr>
                     <td colspan="2">

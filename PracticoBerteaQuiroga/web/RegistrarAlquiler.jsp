@@ -8,6 +8,7 @@
 <%@ page import="Controlador.ConexionJDBC" %>
 <%@ page import="Model.Temporadas" %>
 <%@ page import="java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +33,7 @@
                         Dirección: 
                     </td>
                     <td>
-                        ${param.direccion}
+                        <input type="text" value="${param.direccion}"/>
                     </td>
                 </tr>
                 <tr>
@@ -40,7 +41,7 @@
                         Precio por día:
                     </td>
                     <td>
-                        ${param.precioPorDia}
+                        <input type="text" name="precioPorDia" value="${param.precioPorDia}"/>
                     </td>
                 </tr>
                 <tr>
@@ -82,6 +83,11 @@
                            <option value="<%= idTemporada%>"> <%= descripcion%>  </option>
                           <% } %>
                         </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Registrar"/>
                     </td>
                 </tr>
             </table>
