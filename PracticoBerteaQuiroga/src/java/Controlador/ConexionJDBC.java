@@ -92,7 +92,7 @@ public class ConexionJDBC {
             DateFormat sourceFormat = new SimpleDateFormat("yyyyMMdd");
             query = "select * from Casas c join Alquileres a on c.idCasa = a.idCasa where a.fechaHasta NOT BETWEEN '" + sourceFormat.format(fechaDesde) + "' and '" + sourceFormat.format(fechaHasta) + "' AND a.fechaDesde NOT BETWEEN '" + sourceFormat.format(fechaDesde) + "' and '" + sourceFormat.format(fechaHasta) + "'";
         } else {
-            query = "select * from Casas c  join Alquileres a on c.idCasa = a.idCasa where a.fechaHasta<GetDate()";
+            query = "select distinct * from Casas c  left join Alquileres a on c.idCasa = a.idCasa where a.fechaHasta is null and a.fechaHasta is null or a.fechaHasta<GETDATE()";
         }
 
         try {

@@ -20,9 +20,31 @@
         <title>ABM Casa</title>
     </head>
     <body>
-
+        <hr/>
+    <center>
+        <table>
+            <thead>
+            <th colspan="3">Menú navegación</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="index.html">Inicio</a>
+                    </td>
+                    <td>
+                        <a href="ABMCasa.jsp">ABM Casas</a>
+                    </td>
+                    <td>
+                        <a href="#">Configurar temporadas</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <hr/>
+    <center>
         <h1>Abm Casas</h1>
-       
+
 
         <% ConexionJDBC conexion = ConexionJDBC.getInstance();
             conexion.abrirConexion();
@@ -32,24 +54,25 @@
             conexion.cerrarConexion();
         %>
         <c:if test="${ not empty Casas}">
-                <table border="1">
-                    <tr>
-                        <td>Dirección:</td>
-                        <td>Cantidad de personas:</td>
-                        <td>Cantidad de habitaciones:</td>
-                        <td>Cantidad de baños:</td>
-                        <td>Patio:</td>
-                        <td>Cochera:</td>
-                        <td>Superficie:</td>
-                        <td>Cantidad de Autos:</td>
-                        <td>valoracion:</td>
-                        <td>Precio Por Dia:</td>
-                        <td>Acciones:</td>
-                    </tr>
-                    <c:forEach var="item" items="${Casas}">   
-                       <form method="POST" action="AltaModificacionCasa.jsp">
+            
+            <table border="1">
+                <tr>
+                    <td>Dirección:</td>
+                    <td>Cantidad de personas:</td>
+                    <td>Cantidad de habitaciones:</td>
+                    <td>Cantidad de baños:</td>
+                    <td>Patio:</td>
+                    <td>Cochera:</td>
+                    <td>Superficie:</td>
+                    <td>Cantidad de Autos:</td>
+                    <td>valoracion:</td>
+                    <td>Precio Por Dia:</td>
+                    <td>Acciones:</td>
+                </tr>
+                <c:forEach var="item" items="${Casas}">   
+                    <form method="GET" action="AltaModificacionCasa.jsp">
+                        <input type="hidden" class="Accion" name="Accion" >
                         <input type="hidden" id="idCasa" value="${item.idCasa}">
-                        <input type="hidden" id="Accion" >
                         <tr>
                             <td style="text-align: center"><c:out value="${item.direccion}"/><p></td>
 
@@ -89,35 +112,36 @@
 
                             <td style="text-align: center"><c:out value="${item.precioPorDia}"/><p></td>
 
-                            <td style="text-align: center"><input type="submit" id="Modificar" value="Modificar"></td>
+                            <td style="text-align: center"><input type="submit" class="Modificar" value="Modificar"></td>
                         </tr>
-                     </form>
-                    </c:forEach>
-                    <tr>
-                        <td colspan="10">
-                             <input type="submit" id="Nuevo" value="Agregar">
-                        </td>
-                    </tr>
-                </table>
-       
+                    </form>
+                </c:forEach>
+                <tr>
+                    <td colspan="10">
+                <center>                     
+                    <input type="button" value="Agregar" onclick="javascript:window.location.replace('AltaModificacionCasa.jsp?Accion=1')">
+                </center>   
+                </td>
+                </tr>
+            </table>
+            <hr/>
         </c:if>
         <c:if test="${empty Casas}">
+            <hr/>
             <h1>No se encuentran casas cargadas</h1>
+            <hr/>
         </c:if>
-    </body>
-    
+    </center>
+</body>
+
 </html>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function() {debugger;
-        $("#Nuevo").click(function (){
-            $("#Accion").val(1) 
-        });
-   
-        $("#Modificar").click(function (){
-            $("#Accion").val(2) ;
+    $(document).ready(function() {
+        $(".Modificar").click(function() {
+            $(".Accion").val(2);
         });
     });
 </script>

@@ -9,25 +9,46 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <h2>Alquiler de casas</h2><br/>
-        <h4>Realizar búsqueda:</h4><br/>
+        <hr/>
+    <center>
+        <table>
+            <thead>
+            <th colspan="3">Menú navegación</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="index.html">Inicio</a>
+                    </td>
+                    <td>
+                        <a href="ABMCasa.jsp">ABM Casas</a>
+                    </td>
+                    <td>
+                        <a href="#">Configurar temporadas</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <hr/>
+    <center>
+        <h2>Alquiler de casas</h2>
         <form action="Busqueda" method="GET">
             <table>
                 <tr>
                     <td>Desde:</td>
                     <td><input type="text" name="fechaDesde" value="dd/MM/AAAA"/></td>
                 </tr>
-                   <tr>
+                <tr>
                     <td>Hasta:</td>
                     <td><input type="text" name="fechaHasta" value="dd/MM/AAAA"/></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="Consultar"/></td>
                 </tr>
-                <tr>
-                    <td colspan="2"> <a href="ABMCasa.jsp">ABM Casas</a></td>
-                </tr>
             </table>
         </form>
-    </body>
+    </center>
+    <hr/>
+</body>
 </html>
